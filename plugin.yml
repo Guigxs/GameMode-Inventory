@@ -1,0 +1,8 @@
+name: GMInv
+author: Guigxs
+main: org.guigxs.gminv.gminv
+version: 1.0
+commands:
+  gmi:
+    description: Set gamemode with new inventory
+    usage: /<command>
