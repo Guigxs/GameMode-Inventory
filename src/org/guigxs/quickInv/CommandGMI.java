@@ -21,6 +21,7 @@ public class CommandGMI implements CommandExecutor{
 			System.out.println("Command executed");
 			
 			if(command.getName().equalsIgnoreCase("gmi")) {	
+				
 				if (args.length == 0) {
 					
 					if (sender instanceof Player) {
@@ -30,7 +31,7 @@ public class CommandGMI implements CommandExecutor{
 					}
 				}
 				
-				else {
+				else if(args.length == 1) {
 					
 					if(Bukkit.getPlayer(args[0]) != null) {
 						Player player = Bukkit.getPlayer(args[0]);
@@ -38,6 +39,32 @@ public class CommandGMI implements CommandExecutor{
 						return toggleGameMode(player);
 						
 					}
+					
+					else {
+						sender.sendMessage(ChatColor.YELLOW + "Error, \"" + args[0] + "\" may not exist or is not connected.");
+					}
+				}
+				
+				else if(args.length == 2) {
+					
+					if(Bukkit.getPlayer(args[0]) != null) {
+						Player player = Bukkit.getPlayer(args[0]);
+						try {
+							GameMode gamemode = GameMode.valueOf(args[1].toUpperCase());
+							return changeGameMode(player, gamemode);
+						} catch(Exception e) {
+							sender.sendMessage(ChatColor.YELLOW + "Error, \"" + args[1] + "\" is not a gamemode. "
+									+ "Please choose between : [Creative, Survival, Spectator, Adventure].");
+						}
+					}
+					
+					else {
+						sender.sendMessage(ChatColor.YELLOW + "Error, \"" + args[0] + "\" may not exist or is not connected.");
+					}
+				}
+				
+				else {
+					return false;
 				}
 			}
 
@@ -58,7 +85,7 @@ public class CommandGMI implements CommandExecutor{
 		
 		public boolean changeGameMode(Player player, GameMode gamemode) {
 			if (!saveInventory(player)) {
-				player.sendMessage(ChatColor.GREEN + "Error while saving your inventory");
+				player.sendMessage(ChatColor.GREEN + "Error while saving your inventory.");
 				
 				return false;
 			}

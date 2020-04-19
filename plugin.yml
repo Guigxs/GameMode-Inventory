@@ -7,6 +7,6 @@ version: 1.0
 commands:
   gmi:
     description: Set gamemode with new inventory
-    usage: "Use : /<command>"
+    usage: "Use : /gmi [player] [gamemode] to change his inventory and gamemode"
     permission: quickInv.gmi
     aliases: [gmi, gamemodeinventory]
