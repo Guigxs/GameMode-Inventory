@@ -1,6 +1,5 @@
 package org.guigxs.quickInv;
 
-
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.command.Command;
@@ -35,6 +34,10 @@ public class CommandGMI implements CommandExecutor{
 					
 					if(Bukkit.getPlayer(args[0]) != null) {
 						Player player = Bukkit.getPlayer(args[0]);
+						
+						if (sender.hasPermission("quickInv.gmi.others")){
+							System.out.println("permission ok");
+						}
 						
 						return toggleGameMode(player);
 						

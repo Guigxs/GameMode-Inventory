@@ -68,8 +68,6 @@ public class ConfigManager {
 	public ItemStack[] loadInventory(Player player, GameMode gamemode) {
 		inventoryConfig = YamlConfiguration.loadConfiguration(inventoryFile);
 		
-		Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.YELLOW + "inventoris.yml has been loaded");
-		
 		ItemStack[] is;
 		
 		try {
@@ -77,13 +75,14 @@ public class ConfigManager {
 			List<ItemStack> list = (List<ItemStack>) inventoryConfig.get("Id." + player.getUniqueId().toString() + "." + gamemode.toString());
 			is = new ItemStack[list.size()];
 			list.toArray(is);
+			Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.GREEN + player.getName() +"' inventory ["+ gamemode.toString() +"] has been loaded");
 
 		} catch(Exception e){
-			System.out.println();
 			is = new ItemStack[0];	
+			Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.RED + "Can't get " + player.getName() + "'s inventory [" + gamemode.toString() + "]");
 			
 		}
-		
+
 		return is;
 
 	}

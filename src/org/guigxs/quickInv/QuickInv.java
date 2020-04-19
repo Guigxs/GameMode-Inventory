@@ -19,7 +19,9 @@ public class QuickInv extends JavaPlugin{
 		System.out.println("| Starting QuickInv |");
 		System.out.println("---------------------");
 		
+		this.getCommand("qi").setExecutor(new CommandQI());
 		this.getCommand("gmi").setExecutor(new CommandGMI());	
+		
 		
 	}
 	
