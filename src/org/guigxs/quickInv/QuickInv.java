@@ -1,29 +1,38 @@
-package org.guigxs.gminv;
+package org.guigxs.quickInv;
+
+import java.io.File;
 
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class gminv extends JavaPlugin {
+public class QuickInv extends JavaPlugin{
 
+	public File customConfigFile;
+	ConfigManager configManager;
+	
 	@Override
 	public void onEnable() {
-		System.out.println("--------------");
-		System.out.println("Starting GMInv");
-		System.out.println("--------------");
 		
-		this.saveDefaultConfig();
-		FileConfiguration config = this.getConfig();
-		System.out.println(config.get("test"));
+		loadConfiguration();
+		
+		System.out.println("---------------------");
+		System.out.println("| Starting QuickInv |");
+		System.out.println("---------------------");
 		
 		this.getCommand("gmi").setExecutor(new CommandGMI());	
-		
 		
 	}
 	
 	@Override
 	public void onDisable() {
-		System.out.println("--------------");
-		System.out.println("Stopping GMInv");
-		System.out.println("--------------");
+		System.out.println("---------------------");
+		System.out.println("| Stopping QuickInv |");
+		System.out.println("---------------------");
 	}
+	
+	public void loadConfiguration() {
+		getConfig().options().copyDefaults(true);
+		saveConfig();
+	}
+	
 }

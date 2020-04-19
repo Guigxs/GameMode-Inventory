@@ -1,8 +1,12 @@
-name: GMInv
+name: QuickInv
 author: Guigxs
-main: org.guigxs.gminv.gminv
+main: org.guigxs.quickInv.QuickInv
+description: Use this plugin to toggle the inventories
+api-version: 1.15
 version: 1.0
 commands:
   gmi:
     description: Set gamemode with new inventory
-    usage: /<command>
+    usage: "Use : /<command>"
+    permission: quickInv.gmi
+    aliases: [gmi, gamemodeinventory]
