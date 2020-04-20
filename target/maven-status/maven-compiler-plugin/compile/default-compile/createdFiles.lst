@@ -1,0 +1,5 @@
+org\guigxs\quickInv\commands\CommandGMI.class
+org\guigxs\quickInv\utils\CustomInventory.class
+org\guigxs\quickInv\commands\CommandQI.class
+org\guigxs\quickInv\ConfigManager.class
+org\guigxs\quickInv\QuickInv.class

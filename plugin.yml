@@ -2,7 +2,7 @@ name: QuickInv
 author: Guigxs
 main: org.guigxs.quickInv.QuickInv
 description: Use this plugin to toggle the inventories
-api-version: 1.15
+api-version: 1.14
 version: 1.0
 
 
