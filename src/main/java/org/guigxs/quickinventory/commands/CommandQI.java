@@ -1,4 +1,4 @@
-package org.guigxs.quickInv.commands;
+package org.guigxs.quickinventory.commands;
 
 import java.util.Arrays;
 
@@ -9,8 +9,8 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
-import org.guigxs.quickInv.ConfigManager;
-import org.guigxs.quickInv.utils.CustomInventory;
+import org.guigxs.quickinventory.ConfigManager;
+import org.guigxs.quickinventory.utils.CustomInventory;
 
 import net.md_5.bungee.api.ChatColor;
 

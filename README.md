@@ -21,13 +21,12 @@ This is a simple plugin that helps you to manage players' gamemode inventories.
 
 ## Screenshots
 
-![](https://media.forgecdn.net/attachments/287/640/2020-04-20_16.png)
-![](https://media.forgecdn.net/attachments/287/642/2020-04-20_16.png)
-![](https://media.forgecdn.net/attachments/287/643/2020-04-20_16.png)
-
+![Inventory ready](screenshots/1.png)
+![Change inventory and gamemode](screenshots/2.png)
+![See player's inventory](screenshots/3.png)
 ___
 
-The players' inventories are saved in : `/plugins/QuickInv/inventories.yml`
+The players' inventories are saved in : `/plugins/QuickInventory/inventories.yml`
 
 If you have any questions or suggestions please let me know.
 

@@ -1,6 +1,6 @@
-name: QuickInv
+name: Quick-Inventory
 author: Guigxs
-main: org.guigxs.quickInv.QuickInv
+main: org.guigxs.quickinventory.QuickInventory
 description: Use this plugin to toggle the inventories
 api-version: 1.14
 version: 1.0
@@ -20,7 +20,7 @@ commands:
     
 permissions:
   quickInv.*:
-    description: Gives access to all QuickInv commands
+    description: Gives access to all Quick-Inventory commands
     children:
       quickInv.gmi: true
       quickInv.gmi.other: true

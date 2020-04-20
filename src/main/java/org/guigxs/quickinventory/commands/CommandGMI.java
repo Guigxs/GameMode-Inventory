@@ -1,4 +1,4 @@
-package org.guigxs.quickInv;
+package org.guigxs.quickinventory.commands;
 
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
@@ -6,7 +6,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-
+import org.guigxs.quickinventory.ConfigManager;
 
 import net.md_5.bungee.api.ChatColor;
 
@@ -17,7 +17,8 @@ public class CommandGMI implements CommandExecutor{
 		
 		@Override
 		public boolean onCommand(CommandSender sender, Command command, String arg0, String[] args) {
-			System.out.println("Command executed");
+			
+			configManager.reloadInventory();
 			
 			if(command.getName().equalsIgnoreCase("gmi")) {	
 				
@@ -34,10 +35,8 @@ public class CommandGMI implements CommandExecutor{
 					
 					if(Bukkit.getPlayer(args[0]) != null) {
 						Player player = Bukkit.getPlayer(args[0]);
-						
-						if (sender.hasPermission("quickInv.gmi.others")){
-							System.out.println("permission ok");
-						}
+
+						//TODO check permissions gmi.others
 						
 						return toggleGameMode(player);
 						
@@ -45,33 +44,36 @@ public class CommandGMI implements CommandExecutor{
 					
 					else {
 						sender.sendMessage(ChatColor.YELLOW + "Error, \"" + args[0] + "\" may not exist or is not connected.");
+						return true;
 					}
 				}
 				
 				else if(args.length == 2) {
 					
 					if(Bukkit.getPlayer(args[0]) != null) {
+						
 						Player player = Bukkit.getPlayer(args[0]);
+						
 						try {
 							GameMode gamemode = GameMode.valueOf(args[1].toUpperCase());
+							
 							return changeGameMode(player, gamemode);
 						} catch(Exception e) {
 							sender.sendMessage(ChatColor.YELLOW + "Error, \"" + args[1] + "\" is not a gamemode. "
 									+ "Please choose between : [Creative, Survival, Spectator, Adventure].");
+							
+							return true;
 						}
 					}
 					
 					else {
 						sender.sendMessage(ChatColor.YELLOW + "Error, \"" + args[0] + "\" may not exist or is not connected.");
+						return true;
 					}
-				}
-				
-				else {
-					return false;
 				}
 			}
 
-			return true;
+			return false;
 		}
 		
 		public boolean toggleGameMode(Player player) {

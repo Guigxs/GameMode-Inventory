@@ -1,4 +1,4 @@
-package org.guigxs.quickInv;
+package org.guigxs.quickinventory;
 
 import java.io.File;
 import java.io.IOException;
@@ -15,7 +15,7 @@ import org.bukkit.inventory.ItemStack;
 import net.md_5.bungee.api.ChatColor;
 
 public class ConfigManager {
-	private QuickInv plugin = QuickInv.getPlugin(QuickInv.class);
+	private QuickInventory plugin = QuickInventory.getPlugin(QuickInventory.class);
 	
 	public FileConfiguration inventoryConfig;
 	public File inventoryFile;

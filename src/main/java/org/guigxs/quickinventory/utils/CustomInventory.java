@@ -1,17 +1,16 @@
-package org.guigxs.quickInv.utils;
+package org.guigxs.quickinventory.utils;
 
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.plugin.Plugin;
-
-import org.guigxs.quickInv.ConfigManager;
-import org.guigxs.quickInv.QuickInv;
+import org.guigxs.quickinventory.ConfigManager;
+import org.guigxs.quickinventory.QuickInventory;
 
 public class CustomInventory implements Listener{
 	
-	Plugin plugin = QuickInv.getPlugin(QuickInv.class);
+	Plugin plugin = QuickInventory.getPlugin(QuickInventory.class);
 	ConfigManager configManager =  new ConfigManager();
 	
 	public Inventory newInventory(Player targetPlayer, GameMode gamemode) {
