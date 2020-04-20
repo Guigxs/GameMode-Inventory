@@ -5,6 +5,7 @@ before_install:
 - mvn test
 script:
 - mvn clean install
+
 deploy:
   provider: releases
   skip_cleanup: true
