@@ -15,10 +15,10 @@ public class QuickInv extends JavaPlugin{
 		
 		loadConfiguration();
 		
-		System.out.println("---------------------");
-		System.out.println("| Starting QuickInv |");
-		System.out.println("---------------------");
-		
+		System.out.println("--------------------------");
+		System.out.println("| Starting QuickInv v1.0 |");
+		System.out.println("--------------------------");
+		System.out.println();
 		this.getCommand("qi").setExecutor(new CommandQI());
 		this.getCommand("gmi").setExecutor(new CommandGMI());	
 		
