@@ -5,13 +5,12 @@ before_install:
 - mvn test
 script:
 - mvn clean install
-
 deploy:
   provider: releases
   skip_cleanup: true
   api_key:
     secure: huzTA4rZeLRVsSZbTaWEbjjXpSc4T837L3fuZz9d5x2UPHbJ3UGo6LAojWWU/teF+DubH+BBZqM6pBmeStkOgAAK7dIBk52HIhIAy6TdWa872ivR0TJnud1nGaNvno/0kAmCM3nnmXmVyH+Q8WFdKXojCaLSHOC8+ETrpSxPpbWbRrWSARcQ79MOdacRiqBN7uKzG9JziLXQjF2E1VEMw9PF7gqXXj1ItqAawUw4jRIQ+IngjYrnAAkDNTmsZcdW+mf1gnPPSCPzJb2Xny7eIZlAF3rr6KKfH1p4GFYOB6CdiepbG5prIqMTUaNspvs8igPHY+MzG7Bbm9RoIrF1r88GNAZALh3gQxR3qhwQkr+Z/Qbt/1vYP71cLBulzVtH8cCFSx1872APhD2bNodo1uQeInZt+1+SPN9Bf/lwcWi4CwYaZIj1Ge9lrC0lOYaNHNcvYvnDRURTXIgHikSwLtpRbh9bYo/SfY3oGOzzK7BNQTFpLR/Yz5//3hvoUUu082l+3bcDxaqqOsuDwDgQhqT0D/lBCWum29/6WBQvRlJ9y4IMimb65q6kIyP4UBsB/RHXfWzuEEKrzkEKezKKmfVj3aBDKCbERTAl1y8ndTkzReWUR+wSzofKgLYWqi0B8/u/+cudm1+p3TFw0etXioT04tBVLmZRwoNa6IW3lJ8=
-  file: target/Quick-Inventory*.jar
+  file: target/Quick-Inventory-*.jar
   on:
     tags: true
     repo: Guigxs/Quick-Inventory
