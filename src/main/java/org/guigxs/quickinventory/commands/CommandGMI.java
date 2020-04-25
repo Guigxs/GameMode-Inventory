@@ -1,11 +1,14 @@
 package org.guigxs.quickinventory.commands;
 
+import java.util.HashMap;
+
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 import org.guigxs.quickinventory.ConfigManager;
 
 import net.md_5.bungee.api.ChatColor;
@@ -103,8 +106,20 @@ public class CommandGMI implements CommandExecutor{
 		}
 		
 		public void updateInventory(Player player, GameMode gamemode) {
+			
 			player.sendMessage(ChatColor.YELLOW + "Loading " + gamemode.toString().toLowerCase() + " inventory...");
-			player.getInventory().setContents(configManager.loadInventory(player, gamemode));
+			HashMap<String, Object> playerInfos = configManager.loadInventory(player, gamemode);
+			
+			float xp = (float) playerInfos.get("xp");
+			double health = (double) playerInfos.get("health");
+			int foodlvl = (int) playerInfos.get("food-level");
+			ItemStack[] is = (ItemStack[]) playerInfos.get("inventory");
+
+			player.setExp(xp);
+			player.setHealth(health);
+			player.setFoodLevel(foodlvl);
+			player.getInventory().setContents(is);
+
 		}
 		
 
