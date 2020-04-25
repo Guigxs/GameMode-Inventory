@@ -10,9 +10,9 @@ public class EventListener implements Listener{
 	@EventHandler
 	public void onInventoryClickItem(InventoryClickEvent event) {
 		
-		if (event.getInventory().getSize() == 45) {
+		if (event.getInventory().getSize() == 45 && event.getView().getTitle().contains("'s inventory [")) {
 			event.setCancelled(true);
-			event.getWhoClicked().sendMessage(ChatColor.YELLOW + "You can't modify this inventory");
+			event.getWhoClicked().sendMessage(ChatColor.YELLOW + "You can't modify this inventory !");
 		}
 		
 		

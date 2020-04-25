@@ -45,8 +45,7 @@ public class CommandQI implements CommandExecutor{
 								
 								CustomInventory customInventory = new CustomInventory();
 								Inventory inventory = customInventory.newInventory(targetPlayer, GameMode.valueOf(args[2].toUpperCase()));
-								System.out.println("QI create inv : " + inventory);
-								
+
 								if(sender instanceof Player) {
 									Player player = (Player) sender;
 		
