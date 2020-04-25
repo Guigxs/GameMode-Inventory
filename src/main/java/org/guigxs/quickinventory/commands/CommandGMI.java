@@ -110,12 +110,14 @@ public class CommandGMI implements CommandExecutor{
 			player.sendMessage(ChatColor.YELLOW + "Loading " + gamemode.toString().toLowerCase() + " inventory...");
 			HashMap<String, Object> playerInfos = configManager.loadInventory(player, gamemode);
 			
-			float xp = (float) playerInfos.get("xp");
+			double xp = (double) playerInfos.get("xp");
+			int level = (int) playerInfos.get("level");
 			double health = (double) playerInfos.get("health");
 			int foodlvl = (int) playerInfos.get("food-level");
 			ItemStack[] is = (ItemStack[]) playerInfos.get("inventory");
-
-			player.setExp(xp);
+			
+			player.setExp((float) xp);
+			player.setLevel(level);
 			player.setHealth(health);
 			player.setFoodLevel(foodlvl);
 			player.getInventory().setContents(is);

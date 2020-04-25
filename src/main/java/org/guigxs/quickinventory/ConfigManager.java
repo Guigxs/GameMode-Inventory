@@ -51,16 +51,18 @@ public class ConfigManager {
 		try {
 			
 			inventoryConfig.set("Id." + player.getUniqueId().toString() + "." + player.getGameMode().toString() + ".xp",
-					player.getExp());
+					(double) player.getExp());
+			inventoryConfig.set("Id." + player.getUniqueId().toString() + "." + player.getGameMode().toString() + ".level",
+					(int) player.getLevel());
 			inventoryConfig.set("Id." + player.getUniqueId().toString() + "." + player.getGameMode().toString() + ".health",
-					player.getHealth());
+					(double) player.getHealth());
 			inventoryConfig.set("Id." + player.getUniqueId().toString() + "." + player.getGameMode().toString() + ".food-level",
-					player.getFoodLevel());
+					(int) player.getFoodLevel());
 			inventoryConfig.set("Id." + player.getUniqueId().toString() + "." + player.getGameMode().toString() + ".inventory", 
 					Arrays.asList(player.getInventory().getContents()));
 			
 			inventoryConfig.save(inventoryFile);
-			//Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.GREEN + "inventoris.yml has been saved");
+			Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.GREEN + "inventoris.yml has been saved");
 			return true;
 			
 		} catch(IOException e) {
@@ -76,7 +78,11 @@ public class ConfigManager {
 	
 	public boolean cleanInventory(Player player, GameMode gamemode) {
 		try {
-			inventoryConfig.set("Id." + player.getUniqueId().toString() + "." + gamemode.toString(), null);
+			inventoryConfig.set("Id." + player.getUniqueId().toString() + "." + gamemode.toString() + ".xp", null);
+			inventoryConfig.set("Id." + player.getUniqueId().toString() + "." + gamemode.toString() + ".level", null);
+			inventoryConfig.set("Id." + player.getUniqueId().toString() + "." + gamemode.toString() + ".health", null);
+			inventoryConfig.set("Id." + player.getUniqueId().toString() + "." + gamemode.toString() + ".food-level", null);
+			inventoryConfig.set("Id." + player.getUniqueId().toString() + "." + gamemode.toString() + ".inventory", null);
 			inventoryConfig.save(inventoryFile);
 			return true;
 			
@@ -94,9 +100,11 @@ public class ConfigManager {
 		HashMap<String, Object> playerInfos = new HashMap<String, Object>();
 		
 		try {
-
-			float xp = (float) inventoryConfig.get("Id." + player.getUniqueId().toString() + "." + gamemode.toString() + ".xp");
+			double xp = (double) inventoryConfig.get("Id." + player.getUniqueId().toString() + "." + gamemode.toString() + ".xp");
 			playerInfos.put("xp", xp);
+			
+			int level = (int) inventoryConfig.getInt("Id." + player.getUniqueId().toString() + "." + gamemode.toString() + ".level");
+			playerInfos.put("level", level);
 			
 			Double health = inventoryConfig.getDouble("Id." + player.getUniqueId().toString() + "." + gamemode.toString() + ".health");
 			playerInfos.put("health", health);
@@ -104,7 +112,6 @@ public class ConfigManager {
 			int foodlvl = inventoryConfig.getInt("Id." + player.getUniqueId().toString() + "." + gamemode.toString() + ".food-level");
 			playerInfos.put("food-level", foodlvl);
 			
-			//List<ItemStack> list = (List<ItemStack>) inventoryConfig.get("Id." + player.getUniqueId().toString() + "." + gamemode.toString() + ".inventory");
 			@SuppressWarnings("unchecked")
 			List<ItemStack> list = (List<ItemStack>) inventoryConfig.getList("Id." + player.getUniqueId().toString() + "." + gamemode.toString() + ".inventory");
 			is = new ItemStack[list.size()];
@@ -113,7 +120,8 @@ public class ConfigManager {
 			//Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.GREEN + player.getName() +"' inventory ["+ gamemode.toString() +"] has been loaded");
 
 		} catch(Exception e){
-			playerInfos.put("xp", 0.0f);
+			playerInfos.put("xp", 0.0d);
+			playerInfos.put("level", 0);
 			playerInfos.put("health", 20.0d);
 			playerInfos.put("food-level", 20);
 			is = new ItemStack[0];	

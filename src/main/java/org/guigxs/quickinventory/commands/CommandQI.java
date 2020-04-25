@@ -55,7 +55,7 @@ public class CommandQI implements CommandExecutor{
 								}
 								else {
 									
-									//TODO clean console view
+									//TODO see player's info
 									
 									sender.sendMessage(Arrays.asList(inventory.getContents()).toString());
 								}
@@ -116,6 +116,10 @@ public class CommandQI implements CommandExecutor{
 								if(configManager.cleanInventory(targetPlayer, gm)) {
 								
 									if(targetPlayer.getGameMode().toString().equalsIgnoreCase(gm.toString())) {
+										targetPlayer.setExp(0);
+										targetPlayer.setLevel(0);
+										targetPlayer.setHealth(20);
+										targetPlayer.setFoodLevel(20);
 										targetPlayer.getInventory().clear();
 									}
 									
